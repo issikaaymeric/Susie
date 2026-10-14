@@ -1,0 +1,57 @@
+{
+  "name": "susie",
+  "displayName": "Coding Assistant",
+  "description": "AI-powered code analysis, breakdown, correction, and chat backed by Mistral.",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Programming Languages", "Linters", "Machine Learning"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "susie.rotateToken",
+        "title": "Coding Assistant: Rotate Install Token"
+      },
+      {
+        "command": "susie.applyCorrection",
+        "title": "Coding Assistant: Apply Correction"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "type": "webview",
+          "id": "susie.chatView",
+          "name": "Coding Assistant Chat"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Coding Assistant",
+      "properties": {
+        "susie.serverUrl": {
+          "type": "string",
+          "default": "https://susie-w9xo.onrender.com",
+          "description": "Base URL of the backend proxy server (never point this at the Mistral API directly)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "esbuild src/extension.js --bundle --platform=node --external:vscode --outfile=dist/extension.js",
+    "watch": "npm run build -- --watch",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.0",
+    "vitest": "^1.6.0",
+    "@types/vscode": "^1.85.0"
+  },
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/issikaaymeric/Susie"
+}
+}
