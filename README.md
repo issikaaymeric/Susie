@@ -398,6 +398,4 @@ After deployment:
 
 ---
 
-## License
 
-Add your project license information here (for example, MIT) and include a `LICENSE` file in the repository root.
